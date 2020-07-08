@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Questionnaire": {
+    "questionnaire": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Questionnaire",
+            "outputPath": "dist/questionnaire",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,9 +24,13 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -62,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Questionnaire:build"
+            "browserTarget": "questionnaire:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Questionnaire:build:production"
+              "browserTarget": "questionnaire:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Questionnaire:build"
+            "browserTarget": "questionnaire:build"
           }
         },
         "test": {
@@ -88,9 +92,13 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.js"
+            ]
           }
         },
         "lint": {
@@ -110,15 +118,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Questionnaire:serve"
+            "devServerTarget": "questionnaire:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Questionnaire:serve:production"
+              "devServerTarget": "questionnaire:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "Questionnaire"
+  "defaultProject": "questionnaire"
 }
