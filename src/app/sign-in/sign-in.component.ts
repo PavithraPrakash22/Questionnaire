@@ -11,6 +11,7 @@ import { HttpClient } from '@angular/common/http';
 export class SignInComponent implements OnInit {
  email:string;
  password:string;
+  msg: string;
   constructor(private http:HttpClient,private router:Router,private _service:UserService) { }
 
   ngOnInit(): void {
@@ -19,7 +20,7 @@ export class SignInComponent implements OnInit {
   {
     this._service.Login(this.email,this.password).subscribe(data=>{
       console.log(data)
-      if(data.userName!="")
+      if(data.userName!="Invalid User")
       {
         console.log("HAHAHAHHAHAHA");
         localStorage.setItem('username',data.userName);
@@ -29,8 +30,9 @@ export class SignInComponent implements OnInit {
         this.router.navigate(['test']);
       }
       else
-      {
-        console.log("Nothing found");
+      {  
+        this.msg="Please Enter Valid Username and password";
+      console.log("Nothing found");
       }
 
     },
