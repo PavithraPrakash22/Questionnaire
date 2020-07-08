@@ -11,12 +11,14 @@ import { from } from 'rxjs';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
+
   item:User;
   list:User[];
   msg:string;
-  registerForm: FormGroup;
+  //registerForm: FormGroup;
   submitted = false;
   confirmpassword:string
+  email;
   // firstname = new FormControl('', [
   //   Validators.required
   // ]);
@@ -36,20 +38,20 @@ export class SignUpComponent implements OnInit {
   // mobileno = new FormControl('', [
   //   Validators.required,
   // ]);
-  constructor(private _service:UserService,private router:Router,private formBuilder: FormBuilder) {  
+  constructor(private _service:UserService,private router:Router) {  
     this.item = new User();
   }
   
 
   ngOnInit(): void {
-    this.registerForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}')]],
-      mobileno:['',[Validators.required,Validators.pattern('^[0-9]{10}$')]],
-      confirmpassword:['',[Validators.required]]
-  });
+  //   this.registerForm = this.formBuilder.group({
+  //     firstName: ['', Validators.required],
+  //     lastName: ['', Validators.required],
+  //     email: ['', [Validators.required, Validators.email]],
+  //     password: ['', [Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}')]],
+  //     mobileno:['',[Validators.required,Validators.pattern('^[0-9]{10}$')]],
+  //     confirmpassword:['',[Validators.required]]
+  // });
   }
    MustMatch() {
     if(this.item.userPassword == this.confirmpassword)
@@ -67,9 +69,9 @@ export class SignUpComponent implements OnInit {
 Add()
 {
   this.submitted = true;
-  if (this.registerForm.invalid) {
-    return;
-}
+  // if (this.registerForm.invalid) {
+  //   return;
+// }
   console.log("11111111");
   this.item.userResponseCount=0;
   console.log(this.item);
